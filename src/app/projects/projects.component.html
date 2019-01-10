@@ -1,0 +1,17 @@
+
+<section class="section section-projects">
+	<h2 class="section-header">Things I'm working on</h2>
+	<div class="projects">
+		<div class="project" *ngFor="let project of projects;let i = index;let odd=odd; let even=even;" [ngClass]="{ 'project-odd': odd, 'project-even': even}">
+			<div>
+				<h3>{{project.name}}</h3>
+				<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
+				<p>{{project.description}}</p>
+				<div class="project-links">
+					<a class="link-visit link" data-hover="Visit project" href="{{project.link}}">Visit project</a>
+				</div>
+			</div>
+			<img src="{{project.image}}">
+		</div>
+	</div>
+</section>
