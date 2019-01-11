@@ -15,7 +15,7 @@ export class HeroComponent implements AfterViewInit {
   	constructor() { }
 
   	ngAfterViewInit() {
-		const headings = document.querySelectorAll('h1,h2');
+		const headings = document.querySelectorAll('.animete-headers');
 		AnimateOnView(headings, 'text-shadow-pop' );
 
 		let typed = new Typed('#typed', {
