@@ -5,18 +5,21 @@
 	.screenshots
 		position: relative
 
-		img.laptop
-			width: 700px
+		img
+			opacity: 0
 
-		img.mobile
-			position: absolute
-			width: 240px
-			top: 56px
-			right: 0px
+			&.laptop
+				width: 700px
+
+			&.mobile
+				position: absolute
+				width: 240px
+				top: 56px
+				right: 0
 
 	.summary
 		width: 100%
-		margin-left: 4em;
+		margin-left: 4em
 
 @media screen and (max-width: 1180px)
 	.section-project-summary
@@ -37,7 +40,7 @@
 		flex-wrap: wrap
 
 		.screenshots
-			margin: 3em 0 1em;
+			margin: 3em 0 1em
 
 			img.laptop
 				max-width: 460px

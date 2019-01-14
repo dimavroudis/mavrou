@@ -1,8 +1,10 @@
 <main *ngIf="project; else NotShow" id="project">
-	<section id="summary" class="section section-hero section-project-summary">
+	<section class="section section-hero section-project-summary" id="summary">
 		<div class="screenshots">
-			<img *ngIf="project.images.laptop" class="laptop delay" alt="{{project.name}} laptop screenshot" src="{{project.images.laptop}}">
-			<img *ngIf="project.images.mobile" class="mobile " alt="{{project.name}} mobile screenshot" src="{{project.images.mobile}}">
+			<img (load)="AnimateImage('laptop')" *ngIf="project.images.laptop" [src]="project.images.laptop"
+					 alt="{{project.name}} laptop screenshot" class="laptop">
+			<img (load)="AnimateImage('mobile')" *ngIf="project.images.mobile" [src]="project.images.mobile"
+					 alt="{{project.name}} mobile screenshot" class="mobile float-delay">
 		</div>
 		<div class="summary">
 			<h1 class="text-shadow-pop">{{project.name}}</h1>
@@ -10,12 +12,12 @@
 			<div class="project-links link-group">
 				<a class="link-visit link" data-hover="Visit project" href="{{project.link}}">Visit {{project.type}}</a>
 				<span class="separator"></span>
-				<button class="link" (click)="goBack()">Go back</button>
+				<button (click)="goBack()" class="link">Go back</button>
 			</div>
 
 		</div>
 	</section>
-	<section id="details" class="section section-project-details">
+	<section class="section section-project-details" id="details">
 		<h2>More coming soon...</h2>
 	</section>
 

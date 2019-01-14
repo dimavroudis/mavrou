@@ -34,4 +34,11 @@ export class ProjectComponent implements OnInit {
 	goBack(): void {
 		this.location.back();
 	}
+
+	AnimateImage(image: string): void {
+		const mockups = document.querySelectorAll('.screenshots img.' + image);
+		mockups.forEach(element => {
+			element.classList.add('float');
+		});
+	}
 }
