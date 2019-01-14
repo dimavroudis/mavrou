@@ -6,19 +6,19 @@ import {ProjectComponent} from './project/project.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-	{path: '', component: HomePageComponent},
+	{path: '', component: HomePageComponent, data: {animation: 'HomePage'}},
 	{
 		path: 'projects',
 		children: [
 			{path: '', redirectTo: '/', pathMatch: 'full'},
-			{path: ':id', component: ProjectComponent},
+			{path: ':id', component: ProjectComponent, data: {animation: 'Project'}},
 		]
 	},
 	{path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {
