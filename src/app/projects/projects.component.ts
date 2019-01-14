@@ -1,10 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
-import { Project } from './project';
+import {Project} from '../project';
 
-import { ProjectService } from '../project.service';
+import {ProjectService} from '../project.service';
 
-import { AnimateOnView } from 'src/assets/js/main';
+import {AnimateOnView} from 'src/assets/js/main';
 
 @Component({
 	selector: 'app-projects',
@@ -15,7 +15,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 
 	projects: Project[];
 
-	constructor(private projectService: ProjectService ) { }
+	constructor(private projectService: ProjectService) {
+	}
 
 	ngOnInit() {
 		this.getProjects();
@@ -24,8 +25,8 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 	ngAfterViewInit() {
 		const projectsEven = document.querySelectorAll('.project-even img');
 		const projectsOdd = document.querySelectorAll('.project-odd img');
-		AnimateOnView(projectsEven, 'box-shadow-pop-right' );
-		AnimateOnView(projectsOdd, 'box-shadow-pop-left' );
+		AnimateOnView(projectsEven, 'box-shadow-pop-right');
+		AnimateOnView(projectsOdd, 'box-shadow-pop-left');
 	}
 
 	getProjects(): void {

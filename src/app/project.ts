@@ -1,8 +1,11 @@
 export class Project {
-	id: number;
+	id: string;
 	name: string;
+	summary: string;
 	description: string;
+	skills: Object;
 	link: string;
 	tags: Array<string>;
-	image: string;
+	logo: string;
+	images: Object;
 }

@@ -1,0 +1,25 @@
+<main *ngIf="project; else NotShow" id="project">
+	<section id="summary" class="section section-project-summary">
+		<div class="slideshow">
+			<img alt="{{project.name}} mobile screenshot" src="{{project.images.mobile}}">
+			<img alt="{{project.name}} laptop screenshot" src="{{project.images.laptop}}">
+		</div>
+		<div>
+			<img alt="{{project.name}} logo" src="{{project.logo}}">
+			<h1>{{project.name}}</h1>
+			<p>{{project.description}}</p>
+			<div class="project-links">
+				<a class="link-visit link" data-hover="Visit project" href="{{project.link}}">Visit project</a>
+			</div>
+		</div>
+	</section>
+	<section id="details" class="section section-project-details">
+
+	</section>
+	<section class="section">
+		<button class="link" (click)="goBack()">Go back</button>
+	</section>
+</main>
+<ng-template #NotShow>
+	<app-page-not-found></app-page-not-found>
+</ng-template>

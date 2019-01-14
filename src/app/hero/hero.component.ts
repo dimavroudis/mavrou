@@ -1,24 +1,20 @@
-import { Component,  AfterViewInit, OnInit  } from '@angular/core';
-
-import { AnimateOnView } from 'src/assets/js/main';
+import {AfterViewInit, Component} from '@angular/core';
 
 import Typed from 'typed.js';
 
 @Component({
-  selector: 'app-hero',
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.sass']
+	selector: 'app-hero',
+	templateUrl: './hero.component.html',
+	styleUrls: ['./hero.component.sass']
 })
 
 export class HeroComponent implements AfterViewInit {
 
-  	constructor() { }
+	constructor() {
+	}
 
-  	ngAfterViewInit() {
-		const headings = document.querySelectorAll('.animete-headers');
-		AnimateOnView(headings, 'text-shadow-pop' );
-
-		let typed = new Typed('#typed', {
+	ngAfterViewInit() {
+		const typed = new Typed('#typed', {
 			stringsElement: '#typed-strings',
 			typeSpeed: 60
 		});

@@ -1,26 +1,14 @@
-
-<section class="section section-projects">
-	<h2 class="section-header animete-headers">Things I'm working on</h2>
-	<div class="projects">
-		<div class="project" *ngFor="let project of projects;let i = index;let odd=odd; let even=even;" [ngClass]="{ 'project-odd': odd, 'project-even': even}">
-			<div>
-				<h3>{{project.name}}</h3>
-				<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
-				<p>{{project.description}}</p>
-				<div class="project-links">
-					<a class="link-visit link" data-hover="Visit project" href="{{project.link}}">Visit project</a>
-				</div>
+<div class="projects">
+	<div class="project" *ngFor="let project of projects;let odd=odd; let even=even;"
+			 [ngClass]="{ 'project-odd': odd, 'project-even': even}">
+		<div>
+			<h3>{{project.name}}</h3>
+			<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
+			<p>{{project.summary}}</p>
+			<div class="project-links">
+				<a class="link-visit link" data-hover="Visit project" routerLink="/projects/{{project.id}}">Visit project</a>
 			</div>
-			<img alt="{{project.name}} logo" src="{{project.image}}">
 		</div>
-	</div>
-</section>
-<div class="section section-projects-below section-banner">
-	<div class="banner-image">
-		<img alt="man walking by a laptop" src="assets\images\worklife.svg">
-	</div>
-	<div class="banner-heading">
-		<h3 class="animete-headers">Looking for more? </h3>
-		<p class="lead">Checkout my profile on <a class="link" href="https://github.com/dimavroudis">GitHub</a> and <a class="link" href="https://www.linkedin.com/in/dimitrismavroudis/">Linkedin</a></p>
+		<img alt="{{project.name}} logo" src="{{project.logo}}">
 	</div>
 </div>
