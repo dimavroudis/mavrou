@@ -1,0 +1,52 @@
+.section-project-summary
+	align-items: center
+	flex-wrap: nowrap
+
+	.screenshots
+		position: relative
+
+		img.laptop
+			width: 700px
+
+		img.mobile
+			position: absolute
+			width: 240px
+			top: 56px
+			right: 0px
+
+	.summary
+		width: 100%
+		margin-left: 4em;
+
+@media screen and (max-width: 1180px)
+	.section-project-summary
+
+		.screenshots
+
+			img.laptop
+				width: 460px
+
+			img.mobile
+				position: absolute
+				width: 200px
+				top: 40px
+				right: 30px
+
+@media screen and (max-width: 900px)
+	.section-project-summary
+		flex-wrap: wrap
+
+		.screenshots
+			margin: 3em 0 1em;
+
+			img.laptop
+				max-width: 460px
+				width: 100%
+
+			img.mobile
+				width: 35%
+				top: 8%
+				right: 10%
+
+		.summary
+			margin-left: 0
