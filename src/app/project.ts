@@ -3,7 +3,7 @@ export class Project {
 	name: string;
 	type: string;
 	summary: string;
-	description: string;
+	highlights: Array<string>;
 	skills: Object;
 	link: string;
 	tags: Array<string>;

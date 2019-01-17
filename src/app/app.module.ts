@@ -9,6 +9,7 @@ import {HeroComponent} from './hero/hero.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {ProjectComponent} from './project/project.component';
+import {CodeAnalysisComponent} from './code-analysis/code-analysis.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {ProjectComponent} from './project/project.component';
 		HeroComponent,
 		PageNotFoundComponent,
 		HomePageComponent,
-		ProjectComponent
+		ProjectComponent,
+		CodeAnalysisComponent
 	],
 	imports: [
 		BrowserModule,

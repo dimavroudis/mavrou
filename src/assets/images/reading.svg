@@ -1,8 +1,8 @@
-<svg id="5e1838a0-6e06-4e3f-aa75-de6d8e6cdfa0" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+<svg id="5e1838a0-6e06-4e3f-aa75-de6d8e6cdfa0" xmlns="http://www.w3.org/2000/svg"
 		 width="1007.04" height="858" viewBox="0 0 1007.04 858">
 	<defs>
 		<linearGradient id="cc082665-c41a-43d9-8451-73726d32e49c" x1="569.66" y1="824.63" x2="569.66" y2="70.6"
-										gradientUnits="userSpaceOnUse">
+		>
 			<stop offset="0" stop-color="gray" stop-opacity="0.25"/>
 			<stop offset="0.54" stop-color="gray" stop-opacity="0.12"/>
 			<stop offset="1" stop-color="gray" stop-opacity="0.1"/>
