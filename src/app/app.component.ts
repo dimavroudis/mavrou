@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {animate, query, style, transition, trigger} from '@angular/animations';
-import {RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -39,6 +39,14 @@ import {RouterOutlet} from '@angular/router';
 
 export class AppComponent {
 	title = 'mavrou';
+
+	constructor(private router: Router) {
+		this.router.events.subscribe(event => {
+			if (event instanceof NavigationEnd) {
+				gtag('config', 'UA-79194198-1', {'page_path': event.urlAfterRedirects});
+			}
+		});
+	}
 
 	prepareRoute(outlet: RouterOutlet) {
 		return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

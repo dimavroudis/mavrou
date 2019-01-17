@@ -19,12 +19,6 @@ body
 	font-size: 18px
 	margin: 0
 
-router-outlet ~ *
-	position: absolute
-	height: 100%
-	width: 100%
-
-
 // Typography
 
 h1,
@@ -32,7 +26,8 @@ h2,
 h3
 	font-family: $font-header
 	font-weight: lighter
-	margin-bottom: .2em
+	line-height: 1em
+	margin-bottom: 0.5em
 
 h1
 	font-size: 2.5em
@@ -105,18 +100,32 @@ h3
 
 // Structural 
 
+.nav
+	position: absolute
+	width: 85%
+	max-width: 1240px
+	padding: 10px 0
+	left: 50%
+	-webkit-transform: translateX(-50%)
+	transform: translateX(-50%)
+	z-index: 999
+
+	.logo
+		box-shadow: 11px 8px 0px -4px #f89d33
+		border: 5px solid #222831
+
 .section
 	width: 85%
 	max-width: 1240px
 	margin: 1em auto 3em
 
 	&-hero
-		min-height: 100vh
+		min-height: calc(100vh - 3em)
 		display: flex
 		justify-content: space-between
 		flex-wrap: wrap
 		margin-bottom: 0
-		margin-top: 0
+		margin-top: 3em
 
 
 	&-banner
@@ -129,6 +138,13 @@ h3
 		margin: 0 0 1em 0
 		font-size: 5em
 
+router-outlet ~ *
+	position: absolute
+	height: 100%
+	width: 100%
+
+.wrapper
+	position: relative
 
 // Hero Section 
 
@@ -266,6 +282,11 @@ h3
 	.lead
 		font-size: 1em
 
+	.nav
+		width: 100%
+		max-width: 100%
+		padding: 10px 16px
+
 	.section
 		width: 100%
 		max-width: 100%
@@ -289,3 +310,40 @@ h3
 		svg,
 		object
 			max-width: 90%
+
+.code-graph
+	display: flex
+	flex-direction: column
+	width: 100%
+
+.graphbar
+	position: relative
+	display: flex
+	align-items: center
+	min-width: fit-content
+	height: 1.7em
+	background: $text-color
+	color: $background-color
+	font-size: 1em
+	margin-bottom: 0.4em
+	padding-left: 1.2em
+	border-radius: 30px 6px 28px 6px
+	transition: width 800ms 300ms ease-in-out
+
+.graphbar[data-hover]:after
+	content: attr(data-hover)
+	padding-left: 1em
+	opacity: 0
+	overflow: hidden
+	width: 0
+	font-size: .9em
+	transition: opacity 300ms 0ms ease-in-out, width 0ms 300ms ease
+
+.graphbar[data-hover]:hover
+	width: 100% !important
+	transition: width 800ms ease-in-out
+
+	&:after
+		opacity: 1
+		width: 100%
+		transition: opacity 300ms 700ms ease-in-out, width 0ms 700ms ease

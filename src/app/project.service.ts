@@ -20,4 +20,7 @@ export class ProjectService {
 		return of(PROJECTS.find(project => project.id === id));
 	}
 
+	getCodeData(id: string): Observable<Object> {
+		return of(PROJECTS.find(project => project.id === id).skills);
+	}
 }
