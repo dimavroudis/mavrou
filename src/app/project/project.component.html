@@ -1,5 +1,5 @@
 <main *ngIf="project; else NotShow" id="project">
-	<section class="section section-hero section-project-summary" id="summary">
+	<section class="section section-hero section-full-screen section-project-summary" id="summary">
 		<div class="screenshots">
 			<img (load)="AnimateImage('laptop')" *ngIf="project.images.laptop" [src]="project.images.laptop"
 					 alt="{{project.name}} laptop screenshot" class="laptop">
@@ -7,10 +7,10 @@
 					 alt="{{project.name}} mobile screenshot" class="mobile float-delay">
 		</div>
 		<div class="summary">
-			<h1 class="text-shadow-pop">{{project.name}}</h1>
+			<h1 class="animate text-shadow-pop">{{project.name}}</h1>
 			<p>{{project.summary}}</p>
 			<div class="project-links link-group">
-				<a class="link-visit link" data-hover="Visit project" href="{{project.link}}">Visit {{project.type}}</a>
+				<a class="link-visit link link-lg" data-hover="Visit project" href="{{project.link}}">Visit {{project.type}}</a>
 			</div>
 			<h4>Technologies Stack</h4>
 			<app-code-analysis></app-code-analysis>

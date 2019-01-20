@@ -5,6 +5,7 @@ export const PROJECTS: Project[] = [
 			id: 'autoconvert',
 			name: 'AutoConvert Greeklish Permalinks',
 			type: 'plugin',
+			featured: true,
 			summary: 'AutoConvert Greeklish Permalinks is the WordPress plugin that allows users to convert Greek characters to Latin (better known as greeklish) in all permalinks of posts, pages, custom post types and taxonomies.',
 			highlights: [
 				'Expanded on the functionality of previous plugins by adding conversion for old post and better UI',
@@ -57,6 +58,7 @@ export const PROJECTS: Project[] = [
 		{
 			id: 'movvin',
 			name: 'movvin.com',
+			featured: true,
 			type: 'website',
 			summary: 'Movvin is an online solution for travellers and holiday-makers wishing to book transfers from any airport or port to their desired destination and various leisure activities, provided by licensed professionals at the best prices.',
 			highlights: [
@@ -130,6 +132,7 @@ export const PROJECTS: Project[] = [
 			id: 'gostudy',
 			name: 'GoStudy.gr',
 			type: 'website',
+			featured: true,
 			summary: 'GoStudy is a career orientation platform designed to help greek high school students choose their university faculty. The project won the 2nd place on the 6th Innovation & Entrepreneurship Ideas Competition of University of Macedonia. ',
 			highlights: [
 				'Developed a custom search engine',
@@ -183,6 +186,7 @@ export const PROJECTS: Project[] = [
 			id: 'leadcompass',
 			name: 'LeadCompass.gr',
 			type: 'website',
+			featured: false,
 			summary: 'LeadCompass.gr aims to help young people to transition from education to the labor market through a series of e-courses, e-books, webinars, cv templates and more.',
 			highlights: [
 				'LMS functionality',

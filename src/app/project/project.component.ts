@@ -31,10 +31,6 @@ export class ProjectComponent implements OnInit {
 		this.projectService.getProject(id).subscribe(project => this.project = project);
 	}
 
-	goBack(): void {
-		this.location.back();
-	}
-
 	AnimateImage(image: string): void {
 		const mockups = document.querySelectorAll('.screenshots img.' + image);
 		mockups.forEach(element => {

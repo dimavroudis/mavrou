@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {animate, query, style, transition, trigger} from '@angular/animations';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {RouteNavigationService} from './route-navigation.service';
+import Typed from 'typed.js';
 
 @Component({
 	selector: 'app-root',
@@ -20,7 +22,7 @@ import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 					animate('300ms 100ms', style({opacity: 1}))
 				], {optional: true}),
 			]),
-			transition('* => HomePage', [
+			transition('* => *', [
 				query(':enter', [
 					style({opacity: 0})
 				], {optional: true}),
@@ -37,18 +39,55 @@ import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 	]
 })
 
-export class AppComponent {
-	title = 'mavrou';
+export class AppComponent implements OnInit {
 
-	constructor(private router: Router) {
+	constructor(private router: Router, public navigate: RouteNavigationService) {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
-				gtag('config', 'UA-79194198-1', {'page_path': event.urlAfterRedirects});
+				(<any>window).gtag('config', 'UA-79194198-1', {'page_path': event.urlAfterRedirects});
+				this.animateOnView();
 			}
 		});
+		this.navigate.childInit$.subscribe(data => {
+				if (data === 'typed' || data === undefined) {
+					const typed = new Typed('#typed', {
+						stringsElement: '#typed-strings',
+						typeSpeed: 60
+					});
+				}
+				if (data === 'animate' || data === undefined) {
+					this.animateOnView();
+				}
+			}
+		);
+	}
+
+	ngOnInit(): void {
+
 	}
 
 	prepareRoute(outlet: RouterOutlet) {
 		return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+	}
+
+	animateOnView() {
+		const elements = document.querySelectorAll('.animate');
+		elements.forEach(element => {
+			element.classList.remove('animate');
+		});
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.intersectionRatio > 0) {
+					entry.target.setAttribute('style', '');
+				} else {
+					entry.target.setAttribute('style', 'animation:none');
+				}
+				entry.target.classList.remove('animate');
+			});
+		});
+
+		elements.forEach(element => {
+			observer.observe(element);
+		});
 	}
 }

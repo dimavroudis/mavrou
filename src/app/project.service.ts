@@ -12,8 +12,14 @@ export class ProjectService {
 	constructor() {
 	}
 
-	getProjects(): Observable<Project[]> {
-		return of(PROJECTS);
+	getProjects(featured?: boolean): Observable<Project[]> {
+		let projects;
+		if (!(featured === undefined)) {
+			projects = of(PROJECTS.filter(featuredProjects => featuredProjects.featured === featured));
+		} else {
+			projects = of(PROJECTS);
+		}
+		return projects;
 	}
 
 	getProject(id: string): Observable<Project> {

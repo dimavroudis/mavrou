@@ -24,7 +24,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/assets",
-							"src/googlebf6567d4c87b0336.html"
+							"src/googlebf6567d4c87b0336.html",
+							"src/manifest.json"
 						],
             "styles": [
               "src/styles.sass"
@@ -54,7 +55,8 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+							],
+							"serviceWorker": true
             }
           }
         },
@@ -87,8 +89,9 @@
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+							"src/assets/icons/favicon.ico",
+							"src/assets",
+							"src/manifest.json"
             ]
           }
         },

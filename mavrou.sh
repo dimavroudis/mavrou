@@ -22,13 +22,13 @@ then
 	#Stage and commit changes
 	git add .
 	git commit -m "$commitMessage"
-fi
-#Check if you want to push changes
-read -p 'Do you want to push? [y/n]' doPush
-if [[ ${doPush} == 'y' ]]
-then
-	#Push changes
-	git push
+	#Check if you want to push changes
+	read -p 'Do you want to push? [y/n]' doPush
+	if [[ ${doPush} == 'y' ]]
+	then
+		#Push changes
+		git push
+	fi
 fi
 #Everything done. Hit Enter to finish
 read -p 'Hit ENTER to exit'

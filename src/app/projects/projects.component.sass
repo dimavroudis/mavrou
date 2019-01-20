@@ -7,10 +7,10 @@
 	grid-gap: 0 1.2em
 	grid-template-areas: 'title image'
 	width: 70%
-	margin: 4em 0
+	padding: 2em 0
 
 	h3
-		font-size: 2.4em
+		font-size: 2em
 
 	img
 		grid-area: image
@@ -29,11 +29,13 @@
 		img
 			border-radius: 27px 129px 86px 13px
 
+	&:last-child
+		margin-bottom: 0
+
 @media screen and (max-width: 768px)
 
 	.project
 		grid-gap: 0 0
-		margin: 3em 0
 		width: 100%
 
 		img

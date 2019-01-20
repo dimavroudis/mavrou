@@ -1,6 +1,8 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
-import {AnimateOnView} from 'src/assets/js/main';
+import {Profile} from '../profile';
+import {ProfileService} from '../profile.service';
+import {RouteNavigationService} from '../route-navigation.service';
 
 @Component({
 	selector: 'app-home-page',
@@ -8,13 +10,22 @@ import {AnimateOnView} from 'src/assets/js/main';
 	styleUrls: ['./home-page.component.sass']
 })
 
-export class HomePageComponent implements AfterViewInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
 
-	constructor() {
+	profile: Profile;
+
+	constructor(private profileService: ProfileService, public navigate: RouteNavigationService) {
 	}
 
-	ngAfterViewInit() {
-		const headings = document.querySelectorAll('.animate-headers');
-		AnimateOnView(headings, 'text-shadow-pop');
+	ngOnInit(): void {
+		this.getProfile();
+	}
+
+	ngAfterViewInit(): void {
+		this.navigate.setChildInit('typed');
+	}
+
+	getProfile(): void {
+		this.profileService.getProfile(0).subscribe(profile => this.profile = profile);
 	}
 }

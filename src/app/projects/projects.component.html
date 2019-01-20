@@ -7,9 +7,10 @@
 			<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
 			<p>{{project.summary}}</p>
 			<div class="project-links">
-				<a class="link-visit link" data-hover="Visit project" routerLink="/projects/{{project.id}}">Visit project</a>
+				<a class="link-visit link link-lg" data-hover="Visit project" routerLink="/projects/{{project.id}}">Visit
+					project</a>
 			</div>
 		</div>
-		<img alt="{{project.name}} logo" src="{{project.logo}}">
+		<img alt="{{project.name}} logo" class="animate box-shadow-pop" src="{{project.logo}}">
 	</div>
 </div>

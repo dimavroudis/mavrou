@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 
 import {Project} from '../project';
 
 import {ProjectService} from '../project.service';
-
-import {AnimateOnView} from 'src/assets/js/main';
+import {RouteNavigationService} from '../route-navigation.service';
 
 @Component({
 	selector: 'app-projects',
@@ -12,25 +11,31 @@ import {AnimateOnView} from 'src/assets/js/main';
 	styleUrls: ['./projects.component.sass']
 })
 export class ProjectsComponent implements OnInit, AfterViewInit {
-
+	@Input() featured: string;
 	projects: Project[];
 
-	constructor(private projectService: ProjectService) {
+	constructor(private projectService: ProjectService, public navigate: RouteNavigationService) {
 	}
 
 	ngOnInit() {
-		this.getProjects();
+		if (this.featured !== undefined) {
+			if (this.featured === 'true') {
+				this.getProjects(true);
+			}
+			if (this.featured === 'false') {
+				this.getProjects(false);
+			}
+		} else {
+			this.getProjects();
+		}
 	}
 
-	ngAfterViewInit() {
-		const projectsEven = document.querySelectorAll('.project-even img');
-		const projectsOdd = document.querySelectorAll('.project-odd img');
-		AnimateOnView(projectsEven, 'box-shadow-pop-right');
-		AnimateOnView(projectsOdd, 'box-shadow-pop-left');
+	ngAfterViewInit(): void {
+		this.navigate.setChildInit('animate');
 	}
 
-	getProjects(): void {
-		this.projectService.getProjects().subscribe(projects => this.projects = projects);
+	getProjects(current?: boolean): void {
+		this.projectService.getProjects(current).subscribe(projects => this.projects = projects);
 	}
 
 }
