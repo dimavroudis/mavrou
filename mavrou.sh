@@ -2,7 +2,7 @@
 #Go to project folder
 cd C:/Users/Dimitris/workspace/mavrou
 #Build
-ng build --prod --baseHref "https://mavrou.gr/"
+ng build --prod --baseHref "https://mavrou.gr/" -op 'dist/mavrou'
 #Go to deployment folder
 cd C:/Users/Dimitris/workspace/mavrou.com
 #Activate extended pattern matching features
@@ -10,7 +10,7 @@ shopt -s extglob
 #Remove previous build files and directories except CNAME ang .git
 rm -R !(.git|CNAME)
 #Copy new build to deployment folder
-cp C:/Users/Dimitris/workspace/mavrou/docs/* ./ -r
+cp C:/Users/Dimitris/workspace/mavrou/dist/mavrou/* ./ -r
 #Copy index.html and rename to 404.html
 cp index.html 404.html
 #Check if you want to commit changes
