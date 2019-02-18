@@ -7,7 +7,7 @@ export const PROFILES: Profile[] = [
 		lname: 'Mavroudis',
 		gender: 'Male',
 		jobTitle: 'Front End & Wordpress Developer',
-		about: '<p>I am a front end developer with 3+ years experience, based in Thessaloniki, Greece.</p><p>I code and design high quality and fully responsive websites and web apps. I take great care to ensure an exceptional user experience while keeping it clean and efficient behind the scenes.</p><p>I enjoy constantly learning and improving my skills both in programming and design and I take every opportunity build something new.</p>',
+		about: '<p>Front End Developer with 3+ years experience, based in Thessaloniki, Greece.</p><p>I code and design high quality and fully responsive websites and web apps. I take great care to ensure an exceptional user experience while keeping it clean and efficient behind the scenes.</p><p>I enjoy constantly learning and improving my skills both in programming and design and I take every opportunity build something new.</p>',
 		skills: [
 			{
 				name: 'WordPress',
