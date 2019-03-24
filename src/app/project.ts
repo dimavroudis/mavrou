@@ -1,5 +1,5 @@
 export class Project {
-	id: string;
+	name_slug: string;
 	name: string;
 	type: string;
 	featured: boolean;

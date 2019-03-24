@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Profile} from '../profile';
-import {ProfileService} from '../profile.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
 	selector: 'app-about-page',
@@ -8,17 +7,28 @@ import {ProfileService} from '../profile.service';
 	styleUrls: ['./about-page.component.sass']
 })
 export class AboutPageComponent implements OnInit {
-	profile: Profile;
+	private profile: any;
+	private socialMedia: any = [];
 
-	constructor(private profileService: ProfileService) {
+	constructor(
+		private route: ActivatedRoute
+	) {
 	}
 
-	ngOnInit(): void {
-		this.getProfile();
-	}
-
-	getProfile(): void {
-		this.profileService.getProfile(0).subscribe(profile => this.profile = profile);
+	ngOnInit() {
+		this.profile = this.route.snapshot.data['profile'];
+		this.route.snapshot.data['profile']['socialProfiles'].forEach((social) => {
+			let name, url;
+			social['value'].forEach(field => {
+				if (field.field.label === 'Name') {
+					name = field.value;
+				}
+				if (field.field.label === 'URL') {
+					url = field.value;
+				}
+			});
+			this.socialMedia.push({name: name, url: url});
+		});
 	}
 
 }

@@ -12,9 +12,11 @@ import {CodeAnalysisComponent} from './code-analysis/code-analysis.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ProjectsPageComponent} from './projects-page/projects-page.component';
-import {TechStackComponent} from './tech-stack/tech-stack.component';
 import {AboutPageComponent} from './about-page/about-page.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import {ContactFormComponent} from './contact-form/contact-form.component';
+import {FormsModule} from '@angular/forms';
+import {SkillsComponent} from './skills/skills.component';
 
 @NgModule({
 	declarations: [
@@ -25,13 +27,16 @@ import {AboutPageComponent} from './about-page/about-page.component';
 		ProjectComponent,
 		CodeAnalysisComponent,
 		ProjectsPageComponent,
-		TechStackComponent,
-		AboutPageComponent
+		AboutPageComponent,
+		ContactFormComponent,
+		SkillsComponent
 	],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
 		AppRoutingModule,
+		HttpClientModule,
+		FormsModule,
 		ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
 	],
 	providers: [],

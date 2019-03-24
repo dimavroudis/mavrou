@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {animate, query, style, transition, trigger} from '@angular/animations';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {RouteNavigationService} from './route-navigation.service';
@@ -39,7 +39,9 @@ import Typed from 'typed.js';
 	]
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
+
+	private typed: Typed;
 
 	constructor(private router: Router, public navigate: RouteNavigationService) {
 		this.router.events.subscribe(event => {
@@ -50,7 +52,7 @@ export class AppComponent implements OnInit {
 		});
 		this.navigate.childInit$.subscribe(data => {
 				if (data === 'typed' || data === undefined) {
-					const typed = new Typed('#typed', {
+					this.typed = new Typed('#typed', {
 						stringsElement: '#typed-strings',
 						typeSpeed: 60
 					});
@@ -60,10 +62,6 @@ export class AppComponent implements OnInit {
 				}
 			}
 		);
-	}
-
-	ngOnInit(): void {
-
 	}
 
 	prepareRoute(outlet: RouterOutlet) {

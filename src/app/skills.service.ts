@@ -1,46 +1,34 @@
 import {Injectable} from '@angular/core';
-import {throwError} from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
+import {throwError} from 'rxjs';
 import {GLOBALS} from './globals';
-
+import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
 })
-
-export class ProjectService implements Resolve<any> {
-	apiURL = GLOBALS.BASE_API_URL + GLOBALS.PROJECTS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
+export class SkillsService implements Resolve<any> {
+	apiURL = GLOBALS.BASE_API_URL + GLOBALS.SKILLS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {
 	}
 
-	public getProjects(featured?: boolean) {
-		let body = {};
-		if (featured) {
-			body['filter'] = {featured: true};
-		}
-		return this.http.post(this.apiURL, body).pipe(
+	public getSkills() {
+		return this.http.get(this.apiURL).pipe(
 			catchError(this.handleError)
 		);
 	}
 
-	public getProject(id: string) {
-		let body = {};
-		body['filter'] = {name_slug: id};
-		return this.http.post(this.apiURL, body).pipe(
+	public getSkill(id: string) {
+		const options = {params: new HttpParams().set('filter[name_slug]', id)};
+		return this.http.get(this.apiURL, options).pipe(
 			catchError(this.handleError)
 		);
 	}
 
 	resolve(route: ActivatedRouteSnapshot) {
-		if (route.params.id) {
-			return this.getProject(route.params.id);
-		} else {
-			return this.getProjects(route.data['featured']);
-		}
-
+		return this.getSkills();
 	}
 
 	private handleError(error: HttpErrorResponse) {
@@ -58,4 +46,5 @@ export class ProjectService implements Resolve<any> {
 		return throwError(
 			'Something bad happened; please try again later.');
 	};
+
 }

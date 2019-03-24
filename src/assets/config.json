@@ -1,0 +1,6 @@
+{
+	"projectsUrl": "api/collections/projects",
+	"skillsUrl": "api/collections/skills",
+	"aboutmeUrl": "api/singletons/get/aboutme",
+	"apiToken": "58484183684fcedb22adb7e7fb3e49"
+}

@@ -1,0 +1,54 @@
+<div class="contact-form-container">
+	<p>Checkout my profile on
+		<span *ngFor="let socialProfile of socialMedia;let index = index;">
+			<span *ngIf="index !== 0"> and </span>
+			<a class="link" href="{{socialProfile.url}}">{{socialProfile.name}}</a>
+		</span> or send me a message through the form below.
+	</p>
+	<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)" novalidate>
+
+		<div class="form-field">
+			<label for="nameInput">Name
+				<span *ngIf="name.touched && name.errors" class="field-errors">
+						<span *ngIf="name.errors?.required">Your name is required</span>
+					</span>
+			</label>
+			<input #name="ngModel" [ngClass]="{ 'is-invalid': contactForm.submitted && name.invalid }" class="form-control"
+						 id="nameInput" name="name" ngModel placeholder="Your name"
+						 required type="text">
+		</div>
+		<div class="form-field">
+			<label for="emailInput">Email
+				<span *ngIf="email.touched && email.errors" class="field-errors">
+						<span *ngIf="email.errors?.required">Your email is required. </span>
+						<span *ngIf="email.errors?.email">Your email is not valid. </span>
+					</span>
+			</label>
+			<input #email="ngModel" [ngClass]="{ 'is-invalid': contactForm.submitted && email.invalid }" class="form-control"
+						 email id="emailInput" name="email" ngModel
+						 placeholder="youremail@examle.com" required type="email">
+		</div>
+
+		<div class="form-field">
+			<label for="subjectInput">Subject
+				<span *ngIf="subject.touched && subject.errors" class="field-errors">
+					<span *ngIf="subject.errors?.required">A subject is required</span>
+				</span>
+			</label>
+			<input #subject="ngModel" [ngClass]="{ 'is-invalid': contactForm.submitted && subject.invalid }"
+						 class="form-control" id="subjectInput" name="subject" ngModel
+						 placeholder="What do you want to talk about?" required type="text">
+		</div>
+		<div class="form-field">
+			<label for="messageInput">Message
+				<span *ngIf="message.touched && message.errors" class="field-errors">
+					<span *ngIf="message.errors?.required">Your message is empty.</span>
+				</span>
+			</label>
+			<textarea #message="ngModel" [ngClass]="{ 'is-invalid': contactForm.submitted && message.invalid }"
+								class="form-control" id="messageInput" name="message" ngModel
+								placeholder="Write your message.." required></textarea>
+		</div>
+		<button [disabled]="contactForm.invalid" class="btn btn-lg" type="submit">Submit</button>
+	</form>
+</div>

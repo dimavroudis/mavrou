@@ -4,6 +4,7 @@ import {Project} from '../project';
 
 import {ProjectService} from '../project.service';
 import {RouteNavigationService} from '../route-navigation.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
 	selector: 'app-projects',
@@ -14,28 +15,15 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 	@Input() featured: string;
 	projects: Project[];
 
-	constructor(private projectService: ProjectService, public navigate: RouteNavigationService) {
+	constructor(private projectService: ProjectService, public navigate: RouteNavigationService, private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {
-		if (this.featured !== undefined) {
-			if (this.featured === 'true') {
-				this.getProjects(true);
-			}
-			if (this.featured === 'false') {
-				this.getProjects(false);
-			}
-		} else {
-			this.getProjects();
-		}
+		this.projects = this.route.snapshot.data['projects']['entries'];
 	}
 
 	ngAfterViewInit(): void {
 		this.navigate.setChildInit('animate');
-	}
-
-	getProjects(current?: boolean): void {
-		this.projectService.getProjects(current).subscribe(projects => this.projects = projects);
 	}
 
 }

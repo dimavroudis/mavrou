@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
 
 import {Project} from '../project';
-import {ProjectService} from '../project.service';
+import {GLOBALS} from '../globals';
 
 @Component({
 	selector: 'app-project',
@@ -12,24 +11,18 @@ import {ProjectService} from '../project.service';
 })
 
 export class ProjectComponent implements OnInit {
-
-	project: Project;
+	private project: Project;
+	private baseURL = GLOBALS.BASE_API_URL;
 
 	constructor(
 		private route: ActivatedRoute,
-		private location: Location,
-		private projectService: ProjectService
 	) {
 	}
 
 	ngOnInit() {
-		this.getProject();
+		this.project = this.route.snapshot.data['project']['entries'][0];
 	}
 
-	getProject(): void {
-		const id = this.route.snapshot.paramMap.get('id');
-		this.projectService.getProject(id).subscribe(project => this.project = project);
-	}
 
 	AnimateImage(image: string): void {
 		const mockups = document.querySelectorAll('.screenshots img.' + image);

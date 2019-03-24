@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {TechStackComponent} from './tech-stack.component';
+import {ContactFormComponent} from './contact-form.component';
 
-describe('TechStackComponent', () => {
-	let component: TechStackComponent;
-	let fixture: ComponentFixture<TechStackComponent>;
+describe('ContactFormComponent', () => {
+	let component: ContactFormComponent;
+	let fixture: ComponentFixture<ContactFormComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [TechStackComponent]
+			declarations: [ContactFormComponent]
 		})
 			.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(TechStackComponent);
+		fixture = TestBed.createComponent(ContactFormComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

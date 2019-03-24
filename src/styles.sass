@@ -1,11 +1,4 @@
-$font-main: 'Raleway', sans-serif
-$font-header: 'Abril Fatface', serif
-$primary-color: #00adb5
-$secondary-color: #f89d33
-$text-color: #222831
-$link-color: #989898
-$highlights-color: rgba(121, 216, 221, .6)
-$background-color: #eee
+@import "_variables.sass"
 
 *,
 *::after,
@@ -21,7 +14,7 @@ body
 	color: $text-color
 	font-family: $font-main
 	font-weight: 400
-	line-height: 1.45
+	line-height: 1.65
 	margin: 0
 
 p
@@ -57,6 +50,7 @@ small, .text_small
 
 .lead
 	font-size: 1.2em
+	line-height: 1.8em
 
 .link
 	position: relative
@@ -64,11 +58,12 @@ small, .text_small
 	background: transparent
 	border: 0
 	font-family: inherit
-	padding: 10px 0
+	padding: 2px 0
 	text-decoration: none
 	cursor: pointer
 
 	&-lg
+		padding: 10px 0
 		font-size: 1.2em
 
 	&:hover,
@@ -105,6 +100,28 @@ small, .text_small
 		&:first-child
 			margin-left: 0
 
+.btn
+	border: 0
+	background: $primary-color
+	color: #fff
+	cursor: pointer
+	border-radius: 63px 30px 60px 40px
+	padding: 1em 2em
+	font-size: 1rem
+	font-family: $font-main
+	transition: box-shadow 300ms ease-out
+
+	&:disabled, &:disabled:hover
+		cursor: default
+		background: #d7e6e4
+		color: $text-color
+
+	&:hover:not(:disabled),
+	&:focus:not(:disabled)
+		outline: 0
+		box-shadow: 0.9em 0.9em 0 -0.3em $secondary-color
+
+
 .badge
 	display: inline-block
 	background: $primary-color
@@ -121,45 +138,107 @@ small, .text_small
 	margin: 0 .7em
 	background: $link-color
 
-// Structural 
+.form-field
+	position: relative
+	margin-bottom: 2rem
+
+	input, textarea
+		width: calc(100% - 14px)
+		font-size: 1rem
+		font-family: $font-main
+		font-weight: 300
+		line-height: 2.4
+		margin-left: 14px
+		padding: 0.4em 1.6em
+		border: 0
+		background-color: #d7e6e4
+		transition: background-color 300ms ease-in-out
+
+		&:focus, &:active
+			outline: 0
+			background-color: #a8e1e4
+
+
+		&.ng-touched.ng-invalid
+			outline: 0
+			background-color: rgb(255, 195, 195)
+
+
+	label
+		display: block
+		position: absolute
+		top: -31px
+		width: 100%
+		margin: 0
+		transition: all 400ms ease-out
+		font-size: 1.6rem
+		font-family: $font-header
+		font-weight: 400
+		color: #222831
+
+	.field-errors
+		font-family: $font-main
+		font-size: 1rem
+		padding-left: 0.8em
+
+
+	&--active, &--filled
+		label
+			font-size: 0.8rem
+			transform: translateY(-1rem)
+			color: $primary-color
+
+
+// Structural
+
+.navbar-wrapper
+	position: fixed
+	height: 98px
+	width: 100vw
+	z-index: 999
+	background-image: linear-gradient(#eeeeeee8 10%, #eeeeeea3 50%, #eeeeee00 100%)
 
 .navbar
 	position: absolute
 	display: flex
-	width: 85%
 	max-width: 1240px
+	width: 100%
 	padding: 10px 0
 	justify-content: space-between
 	top: 0
 	left: 50%
 	-webkit-transform: translateX(-50%)
 	transform: translateX(-50%)
-	z-index: 999
 
 	.logo
 		box-shadow: 11px 8px 0px -4px #f89d33
 		border: 5px solid #222831
+		background-color: $background-color
+
+	.link
+		padding: 10px 0
 
 
 .section
 	width: 85%
 	max-width: 1240px
 	margin: 0 auto
-	padding: 2em 0 4em
+	padding: 4em 0 6em
 
 	&-hero
 		display: flex
 		justify-content: space-between
 		flex-wrap: wrap
+		padding-bottom: 0
 
 	&-full-screen
 		min-height: 100vh
 
-	&-banner
-		display: flex
-		flex-wrap: wrap
-		align-items: center
+	&:last-child
+		padding-bottom: 10em
 
+	&:nth-child(2)
+		padding-top: 2em
 
 router-outlet ~ *
 	position: absolute
@@ -171,7 +250,7 @@ router-outlet ~ *
 	position: relative
 
 .section-header
-	max-width: 460px
+	max-width: 520px
 	margin-top: 0
 	font-size: 5em
 
@@ -193,6 +272,8 @@ router-outlet ~ *
 	display: flex
 	justify-content: center
 	flex-grow: 1
+	margin-left: 4em
+	margin-bottom: 4em
 
 	img,
 	object
@@ -212,19 +293,36 @@ router-outlet ~ *
 			font-style: italic
 			margin-bottom: 0.8em
 
-// Banner Section 
+// Contact Form Section
 
-.banner-heading
+.section-contact-form-content
+	display: flex
+	flex-wrap: wrap
+
+.contact-form-wrapper
 	flex-grow: 999
 
-	h3
-		font-size: 2.4em
+.contact-form-container
+	max-width: 600px
 
-.banner-image
+	form
+		margin: 4rem 0 2rem
+
+		.btn
+			float: right
+
+			&:after
+				content: ""
+				clear: both
+				display: table
+
+.contact-form-image
+	max-width: 460px
+
 	img
 		display: flex
-		max-height: 240px
-		margin-right: 30px
+		max-width: 100%
+		margin-left: 4rem
 
 // Graphs
 .code-graph
@@ -288,6 +386,15 @@ router-outlet ~ *
 	animation-fill-mode: forwards
 	animation-timing-function: ease-in
 	will-change: box-shadow
+	transform: scale(0.9)
+
+.box-shadow-pop--primary
+	animation-name: box-shadow-pop--primary
+	animation-delay: 200ms
+	animation-duration: 400ms
+	animation-fill-mode: forwards
+	animation-timing-function: ease-in
+	will-change: box-shadow, transform
 
 .project-even
 	.box-shadow-pop
@@ -300,16 +407,28 @@ router-outlet ~ *
 @keyframes box-shadow-pop
 	0%
 		box-shadow: 0 0 0 0 $secondary-color
+		transform: scale(0.9)
 
 	100%
 		box-shadow: 20px 20px 0 -10px $secondary-color
+		transform: scale(1)
+
+
+@keyframes box-shadow-pop--primary
+	0%
+		box-shadow: 0 0 0 0 $highlights-color
+
+	100%
+		box-shadow: 20px 20px 0 -10px $highlights-color
 
 @keyframes box-shadow-pop-left
 	0%
 		box-shadow: 0 0 0 0 $secondary-color
+		transform: scale(0.9)
 
 	100%
 		box-shadow: -20px 20px 0 -10px $secondary-color
+		transform: scale(1)
 
 .float
 	animation-name: raised, float
@@ -380,9 +499,9 @@ router-outlet ~ *
 		h1
 			font-size: 3em
 
-	.banner-image
+	.contact-form-image
 		img
-			margin-right: 0
+			margin-left: 0
 
 @media screen and (min-height: 100vw) and (min-height: 768px) and (min-width: 767px)
 	.section

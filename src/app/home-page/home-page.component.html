@@ -3,7 +3,7 @@
 		<h1 class="animate text-shadow-pop">{{profile.fname}} {{profile.lname}}</h1>
 		<div class="typed-strings">
 			<div id="typed-strings">
-				<p>{{profile.jobTitle}}</p>
+				<p>{{profile.jobTitle}} at {{profile.worksFor}}</p>
 			</div>
 			<span class="lead" id="typed"></span>
 		</div>
@@ -17,20 +17,19 @@
 
 <section id="projects" class="section section-projects">
 	<h2 class="section-header animate text-shadow-pop">Things I worked on</h2>
-	<app-projects featured="true"></app-projects>
+	<app-projects></app-projects>
 </section>
 
-<div class="section section-projects-below section-banner">
-	<div class="banner-image">
-		<img alt="man walking by a laptop" src="assets\images\worklife.svg">
+<section class="section section-projects-below section-contact-form">
+	<h3 class="animate text-shadow-pop section-header">Want to get in touch? </h3>
+	<div class="section-contact-form-content">
+		<div class="contact-form-wrapper">
+			<app-contact-form [socialMedia]="socialMedia"></app-contact-form>
+		</div>
+		<div class="contact-form-image">
+			<img alt="man walking by a laptop" src="assets\images\worklife.svg">
+		</div>
 	</div>
-	<div class="banner-heading">
-		<h3 class="animate text-shadow-pop">Looking for more? </h3>
-		<p class="lead">Checkout my profile on
-			<span *ngFor="let socialProfile of profile.socialProfiles;let index = index;">
-				<span *ngIf="index !== 0"> and </span>
-				<a class="link" href="{{socialProfile.url}}">{{socialProfile.name}}</a>
-			</span>
-	</div>
-</div>
+
+</section>
 

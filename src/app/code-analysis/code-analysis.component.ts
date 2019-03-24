@@ -1,8 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-
-import {ProjectService} from '../project.service';
-import {ActivatedRoute} from '@angular/router';
-import {Location} from '@angular/common';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 
 @Component({
 	selector: 'app-code-analysis',
@@ -11,58 +7,66 @@ import {Location} from '@angular/common';
 })
 
 export class CodeAnalysisComponent implements OnInit, AfterViewInit {
+	@Input() skills;
+	data: Array<object> = [];
 
-	data: Object;
-
-	constructor(
-		private route: ActivatedRoute,
-		private location: Location,
-		private projectService: ProjectService
-	) {
+	constructor() {
 	}
 
 	ngOnInit() {
-		this.getCodeData();
+		console.log(this.skills);
+		this.skills.forEach((skill) => {
+			let name, usage;
+			let subskill = [];
+			skill['value'].forEach(field => {
+				if (field['field']['label'] === 'Skill') {
+					name = field['value']['display'];
+				}
+				if (field['field']['label'] === 'Percentage') {
+					usage = field['value'];
+				}
+				if (field['field']['label'] === 'SubSkill') {
+					field['value'].forEach(subfield => {
+						subskill.push(subfield['value']['display']);
+					});
+				}
+			});
+			this.data.push({name: name, usage: usage, subskill: subskill});
+		});
 	}
 
 	ngAfterViewInit(): void {
 		this.renderData();
 	}
 
-	getCodeData(): void {
-		const id = this.route.snapshot.paramMap.get('id');
-		this.projectService.getCodeData(id).subscribe(data => this.data = data);
-	}
-
 	renderData(): void {
 		const graph = document.getElementById('codeGraph');
 
-		for (const key of Object.keys(this.data)) {
-			const usage = this.data[key].usage + '%';
+		this.data.forEach(skill => {
+			const usage = skill['usage'] + '%';
 
 			// Create Nodes
 			const skillNode = document.createElement('div');
-			const skillText = document.createTextNode(this.data[key].name);
+			const skillText = document.createTextNode(skill['name']);
 
 			// Styling Nodes
 			skillNode.style.width = usage;
-			skillNode.classList.add(this.data[key].name.toLowerCase(), 'graphbar');
+			skillNode.classList.add(skill['name'].toLowerCase(), 'graphbar');
 
 			// Appending Nodes
 			skillNode.appendChild(skillText);
 
-			let detailsText = '';
-			if (this.data[key].details) {
-				const dkeys = Object.keys(this.data[key].details);
-				for (const dkey of dkeys) {
-					if (parseInt(dkey, 10) > 0) {
-						detailsText += ', ';
+			let subskillText = '';
+			if (Array.isArray(skill['subskill'])) {
+				skill['subskill'].forEach((subskill, index) => {
+					if (index > 0) {
+						subskillText += ', ';
 					}
-					detailsText += this.data[key].details[dkey].name;
-				}
-				skillNode.dataset.hover = detailsText;
+					subskillText += subskill;
+				});
+				skillNode.dataset.hover = subskillText;
 			}
 			graph.appendChild(skillNode);
-		}
+		});
 	}
 }
