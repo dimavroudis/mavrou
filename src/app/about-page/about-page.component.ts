@@ -7,8 +7,8 @@ import {ActivatedRoute} from '@angular/router';
 	styleUrls: ['./about-page.component.sass']
 })
 export class AboutPageComponent implements OnInit {
-	private profile: any;
-	private socialMedia: any = [];
+	profile: any;
+	socialMedia: any = [];
 
 	constructor(
 		private route: ActivatedRoute

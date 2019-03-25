@@ -12,8 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 
 export class HomePageComponent implements OnInit, AfterViewInit {
-	private profile: Profile;
-	private socialMedia: Array<object> = [];
+	profile: Profile;
+	socialMedia: Array<object> = [];
 
 	constructor(private profileService: ProfileService, public navigate: RouteNavigationService, private route: ActivatedRoute) {
 	}

@@ -9,7 +9,7 @@ import {GLOBALS} from '../globals';
 export class ContactFormComponent implements OnInit {
 	@Input() socialMedia: object;
 	status = '';
-	apiURL = GLOBALS.BASE_API_URL + GLOBALS.FORM_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
+	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.FORM_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor() {
 	}

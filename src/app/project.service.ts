@@ -11,7 +11,7 @@ import {GLOBALS} from './globals';
 })
 
 export class ProjectService implements Resolve<any> {
-	apiURL = GLOBALS.BASE_API_URL + GLOBALS.PROJECTS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
+	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.PROJECTS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {
 	}

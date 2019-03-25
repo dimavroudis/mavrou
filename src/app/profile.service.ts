@@ -10,7 +10,7 @@ import {GLOBALS} from './globals';
 })
 
 export class ProfileService implements Resolve<any> {
-	apiURL = GLOBALS.BASE_API_URL + GLOBALS.PROFILE_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
+	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.PROFILE_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {
 	}

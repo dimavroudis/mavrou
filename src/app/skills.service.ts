@@ -9,7 +9,7 @@ import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
 	providedIn: 'root'
 })
 export class SkillsService implements Resolve<any> {
-	apiURL = GLOBALS.BASE_API_URL + GLOBALS.SKILLS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
+	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.SKILLS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {
 	}

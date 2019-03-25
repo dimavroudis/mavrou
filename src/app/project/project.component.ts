@@ -11,8 +11,8 @@ import {GLOBALS} from '../globals';
 })
 
 export class ProjectComponent implements OnInit {
-	private project: Project;
-	private baseURL = GLOBALS.BASE_API_URL;
+	project: Project;
+	baseURL = GLOBALS.BASE_API_URL;
 
 	constructor(
 		private route: ActivatedRoute,

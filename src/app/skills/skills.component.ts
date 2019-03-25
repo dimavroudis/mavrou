@@ -9,8 +9,8 @@ import {GLOBALS} from '../globals';
 })
 export class SkillsComponent implements OnInit {
 
-	private skills: any;
-	private baseURL = GLOBALS.BASE_API_URL;
+	skills: any;
+	baseURL = GLOBALS.BASE_API_URL;
 
 	constructor(private route: ActivatedRoute) {
 		this.skills = this.route.snapshot.data['skills']['entries'];

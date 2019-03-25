@@ -41,7 +41,7 @@ import Typed from 'typed.js';
 
 export class AppComponent {
 
-	private typed: Typed;
+	typed: Typed;
 
 	constructor(private router: Router, public navigate: RouteNavigationService) {
 		this.router.events.subscribe(event => {
