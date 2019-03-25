@@ -5,6 +5,7 @@ import {Project} from '../project';
 import {ProjectService} from '../project.service';
 import {RouteNavigationService} from '../route-navigation.service';
 import {ActivatedRoute} from '@angular/router';
+import {GLOBALS} from '../globals';
 
 @Component({
 	selector: 'app-projects',
@@ -14,6 +15,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ProjectsComponent implements OnInit, AfterViewInit {
 	@Input() featured: string;
 	projects: Project[];
+	baseURL = GLOBALS.BASE_API_URL;
 
 	constructor(private projectService: ProjectService, public navigate: RouteNavigationService, private route: ActivatedRoute) {
 	}
