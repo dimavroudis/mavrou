@@ -1,0 +1,17 @@
+<div class="code-analysis-component check-view" id="codeGraph">
+	<div *ngFor="let skill of data" class="skill-wrapper">
+		<div [ngStyle]="{'height.px':skill.usage*2}" class="graphbar"></div>
+		<div class="skill-info">
+			<div class="percentage">
+				{{skill.usage}}%
+			</div>
+			<h4>{{skill.name}}</h4>
+			<ul class="subskills">
+				<li *ngFor="let subskill of skill.subskill" class="subskil">
+					{{subskill}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+

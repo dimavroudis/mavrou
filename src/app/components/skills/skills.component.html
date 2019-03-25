@@ -1,0 +1,10 @@
+<div class="skills-component">
+	<div class="skills-title animate box-shadow-pop--primary">
+		<h2 class="section-header text-shadow-pop">My tech stack</h2>
+		<p class="lead">Languages, frameworks, libraries and other tools I enjoy working with</p>
+	</div>
+	<div *ngFor="let skill of skills" class="skill">
+		<img [src]="baseURL + skill.image.path" alt="{{skill.image.name}} logo">
+		<span>{{skill.name}}</span>
+	</div>
+</div>

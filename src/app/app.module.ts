@@ -4,19 +4,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {ProjectsComponent} from './projects/projects.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {HomePageComponent} from './home-page/home-page.component';
-import {ProjectComponent} from './project/project.component';
-import {CodeAnalysisComponent} from './code-analysis/code-analysis.component';
+import {ProjectsComponent} from './components/projects/projects.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {HomePageComponent} from './pages/home-page/home-page.component';
+import {ProjectComponent} from './pages/project/project.component';
+import {CodeAnalysisComponent} from './components/code-analysis/code-analysis.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {ProjectsPageComponent} from './projects-page/projects-page.component';
-import {AboutPageComponent} from './about-page/about-page.component';
+import {ProjectsPageComponent} from './pages/projects-page/projects-page.component';
+import {AboutPageComponent} from './pages/about-page/about-page.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ContactFormComponent} from './contact-form/contact-form.component';
+import {ContactFormComponent} from './components/contact-form/contact-form.component';
 import {FormsModule} from '@angular/forms';
-import {SkillsComponent} from './skills/skills.component';
+import {SkillsComponent} from './components/skills/skills.component';
+import {HighlightsComponent} from './components/highlights/highlights.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +30,8 @@ import {SkillsComponent} from './skills/skills.component';
 		ProjectsPageComponent,
 		AboutPageComponent,
 		ContactFormComponent,
-		SkillsComponent
+		SkillsComponent,
+		HighlightsComponent
 	],
 	imports: [
 		BrowserModule,

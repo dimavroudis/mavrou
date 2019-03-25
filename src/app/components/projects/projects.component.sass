@@ -1,0 +1,54 @@
+.projects
+	display: flex
+	flex-direction: column
+
+.project
+	display: grid
+	grid-gap: 0 1.2em
+	grid-template-areas: 'title image'
+	width: 70%
+	padding: 2em 0
+
+	h3
+		font-size: 2em
+
+	img
+		grid-area: image
+		height: 128px
+
+	&.project-even
+		text-align: right
+		align-self: flex-end
+
+		img
+			border-radius: 129px 27px 13px 86px
+
+		.box-shadow-pop
+			animation-name: box-shadow-pop
+
+	&.project-odd
+		grid-template-areas: 'image title'
+
+		img
+			border-radius: 27px 129px 86px 13px
+
+		.box-shadow-pop
+			animation-name: box-shadow-pop-left
+
+	&:last-child
+		margin-bottom: 0
+
+
+@media screen and (max-width: 768px)
+
+	.project
+		grid-gap: 0 0
+		width: 100%
+
+		img
+			height: 84px
+
+		&.project-even,
+		&.project-odd
+			grid-template-areas: 'image image' 'title title'
+			text-align: left

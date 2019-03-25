@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomePageComponent} from './home-page/home-page.component';
+import {HomePageComponent} from './pages/home-page/home-page.component';
 // import {ProjectsComponent} from './projects/projects.component';
-import {ProjectComponent} from './project/project.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ProjectsPageComponent} from './projects-page/projects-page.component';
-import {AboutPageComponent} from './about-page/about-page.component';
-import {ProjectService} from './project.service';
-import {ProfileService} from './profile.service';
-import {SkillsService} from './skills.service';
+import {ProjectComponent} from './pages/project/project.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {ProjectsPageComponent} from './pages/projects-page/projects-page.component';
+import {AboutPageComponent} from './pages/about-page/about-page.component';
+import {ProjectService} from './services/project.service';
+import {ProfileService} from './services/profile.service';
+import {SkillsService} from './services/skills.service';
 
 const routes: Routes = [
 	{

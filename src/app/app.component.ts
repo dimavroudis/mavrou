@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {animate, query, style, transition, trigger} from '@angular/animations';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {RouteNavigationService} from './route-navigation.service';
+import {RouteNavigationService} from './services/route-navigation.service';
 import Typed from 'typed.js';
 
 @Component({
@@ -47,7 +47,7 @@ export class AppComponent {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
 				(<any>window).gtag('config', 'UA-79194198-1', {'page_path': event.urlAfterRedirects});
-				this.animateOnView();
+
 			}
 		});
 		this.navigate.childInit$.subscribe(data => {
@@ -58,7 +58,7 @@ export class AppComponent {
 					});
 				}
 				if (data === 'animate' || data === undefined) {
-					this.animateOnView();
+					this.inView();
 				}
 			}
 		);
@@ -81,6 +81,25 @@ export class AppComponent {
 					entry.target.setAttribute('style', 'animation:none');
 				}
 				entry.target.classList.remove('animate');
+			});
+		});
+
+		elements.forEach(element => {
+			observer.observe(element);
+		});
+	}
+
+	inView() {
+		const elements = document.querySelectorAll('.check-view');
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.intersectionRatio > 0) {
+					entry.target.classList.add('in-view');
+					entry.target.classList.remove('not-in-view');
+				} else {
+					entry.target.classList.remove('in-view');
+					entry.target.classList.add('not-in-view');
+				}
 			});
 		});
 

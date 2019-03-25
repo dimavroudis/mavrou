@@ -1,0 +1,81 @@
+@import "variables"
+
+.text-shadow-pop
+	animation-name: text-shadow-pop
+	animation-duration: 1.3s
+	animation-fill-mode: forwards
+	animation-timing-function: ease-in
+	will-change: text-shadow
+
+
+.box-shadow-pop
+	animation-name: box-shadow-pop
+	animation-delay: 200ms
+	animation-duration: 400ms
+	animation-fill-mode: forwards
+	animation-timing-function: ease-in
+	will-change: box-shadow
+	transform: scale(0.9)
+
+
+.float
+	animation-name: raised, float
+	animation-duration: 1.5s, 3s
+	animation-delay: 0s, 1.5s
+	animation-iteration-count: 1, infinite
+	animation-timing-function: ease-out, ease-in-out
+	will-change: tranform
+
+	&.float-delay
+		animation-duration: 1.8s, 3s
+		animation-delay: .3s, 2.1s
+
+@keyframes text-shadow-pop
+	0%
+		text-shadow: 0 0 0 $highlights-color
+
+	100%
+		text-shadow: -.2em -.1em 0 $highlights-color
+
+@keyframes box-shadow-pop
+	0%
+		box-shadow: 0 0 0 0 $secondary-color
+		transform: scale(0.9)
+
+	100%
+		box-shadow: 20px 20px 0 -10px $secondary-color
+		transform: scale(1)
+
+
+@keyframes box-shadow-pop-left
+	0%
+		box-shadow: 0 0 0 0 $secondary-color
+		transform: scale(0.9)
+
+	100%
+		box-shadow: -20px 20px 0 -10px $secondary-color
+		transform: scale(1)
+
+
+@keyframes float
+	0%
+		transform: translatey(0px)
+		opacity: 1
+
+	50%
+		transform: translatey(5px)
+		opacity: 1
+
+	100%
+		transform: translatey(0px)
+		opacity: 1
+
+
+@keyframes raised
+	0%
+		transform: translatey(100px)
+		opacity: 0
+
+	100%
+		transform: translatey(0px)
+		opacity: 1
