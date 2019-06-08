@@ -1,0 +1,29 @@
+.is-sending
+	opacity: 0.3
+
+	&:before
+		content: ''
+		width: 100%
+		height: 100%
+		position: absolute
+		z-index: 10
+		background: transparent
+
+
+.contact-form-container
+	transition: opacity 0.3s ease
+
+.form-status
+	&:after
+		content: ''
+		display: block
+		width: 100%
+		max-width: 150px
+		height: 2px
+		margin-top: 10px
+		background: #00adb5
+		animation: scaleX 300ms ease
+
+	&-error
+		&:after
+			background: #f89d33

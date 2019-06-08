@@ -1,4 +1,4 @@
-<div class="contact-form-container">
+<div class="contact-form-container is-{{status}} ">
 	<p>Checkout my profile on
 		<span *ngFor="let socialProfile of socialMedia;let index = index;">
 			<span *ngIf="index !== 0"> and </span>
@@ -51,4 +51,12 @@
 		</div>
 		<button [disabled]="contactForm.invalid" class="btn btn-lg" type="submit">Submit</button>
 	</form>
+</div>
+
+<div class="form-status form-status-success" *ngIf="status === 'success'">
+	<b>Your message has been sent!</b><br/> I will get back to you as soon as possible.
+</div>
+
+<div class="form-status form-status-error" *ngIf="status === 'error'">
+	<b>There has been a problem!</b><br/> Please try again later.
 </div>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GLOBALS} from '../../globals';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
 	selector: 'app-contact-form',
@@ -8,22 +9,28 @@ import {GLOBALS} from '../../globals';
 })
 export class ContactFormComponent implements OnInit {
 	@Input() socialMedia: object;
-	status = '';
+	status = 'idle';
 	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.FORM_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
-	constructor() {
+	constructor(private http: HttpClient) {
 	}
 
 	onSubmit(form: any) {
-		fetch(this.apiURL, {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				form: form
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json'
 			})
-		})
-			.then(() => this.status = 'success')
-			.catch(() => this.status = 'error');
+		};
+		this.status = 'sending';
+		this.http.post(this.apiURL, {form}, httpOptions).subscribe(
+			() => {
+				this.status = 'success';
+			},
+			(err) => {
+				this.status = 'error';
+				console.log(err);
+			}
+		);
 
 	}
 

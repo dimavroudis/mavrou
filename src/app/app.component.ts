@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {animate, query, style, transition, trigger} from '@angular/animations';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {RouteNavigationService} from './services/route-navigation.service';
-import Typed from 'typed.js';
 
 @Component({
 	selector: 'app-root',
@@ -41,8 +40,6 @@ import Typed from 'typed.js';
 
 export class AppComponent {
 
-	typed: Typed;
-
 	constructor(private router: Router, public navigate: RouteNavigationService) {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
@@ -51,13 +48,8 @@ export class AppComponent {
 			}
 		});
 		this.navigate.childInit$.subscribe(data => {
-				if (data === 'typed' || data === undefined) {
-					this.typed = new Typed('#typed', {
-						stringsElement: '#typed-strings',
-						typeSpeed: 60
-					});
-				}
 				if (data === 'animate' || data === undefined) {
+					this.animateOnView();
 					this.inView();
 				}
 			}

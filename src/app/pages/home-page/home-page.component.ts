@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 	ngOnInit(): void {
 		this.profile = this.route.snapshot.data['profile'];
 		this.route.snapshot.data['profile']['socialProfiles'].forEach((social) => {
-			let name, url;
+			let name = '', url = '';
 			social['value'].forEach(field => {
 				if (field.field.label === 'Name') {
 					name = field.value;
