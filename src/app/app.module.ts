@@ -18,6 +18,9 @@ import {ContactFormComponent} from './components/contact-form/contact-form.compo
 import {FormsModule} from '@angular/forms';
 import {SkillsComponent} from './components/skills/skills.component';
 import {HighlightsComponent} from './components/highlights/highlights.component';
+import {BlogComponent} from './pages/blog/blog.component';
+import {SinglePostComponent} from './pages/blog/single-post/single-post.component';
+import {PostComponent} from './components/post/post.component';
 
 @NgModule({
 	declarations: [
@@ -31,7 +34,10 @@ import {HighlightsComponent} from './components/highlights/highlights.component'
 		AboutPageComponent,
 		ContactFormComponent,
 		SkillsComponent,
-		HighlightsComponent
+		HighlightsComponent,
+		BlogComponent,
+		SinglePostComponent,
+		PostComponent
 	],
 	imports: [
 		BrowserModule,

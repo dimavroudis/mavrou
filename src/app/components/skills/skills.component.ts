@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {GLOBALS} from '../../globals';
 
 @Component({
-	selector: 'app-skills',
+	selector: 'skills',
 	templateUrl: './skills.component.html',
 	styleUrls: ['./skills.component.sass']
 })

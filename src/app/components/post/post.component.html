@@ -1,0 +1,14 @@
+<header>
+	<h1>{{post.title}}</h1>
+	<span *ngFor="let tag of post.tags" class="badge">{{tag}}</span>
+	<img [src]="baseURL + post.image.path" alt="{{post.title}}">
+</header>
+<div [innerHTML]="post.content"></div>
+<footer *ngIf="summary">
+	<div class="post-link">
+		<a class="link-visit link link-lg" data-hover="Read More" routerLink="/blog/{{post.title_slug}}">Read more</a>
+	</div>
+</footer>
+
+
+

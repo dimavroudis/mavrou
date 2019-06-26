@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 import {GLOBALS} from '../../globals';
 
 @Component({
-	selector: 'app-projects',
+	selector: 'projects',
 	templateUrl: './projects.component.html',
 	styleUrls: ['./projects.component.sass']
 })

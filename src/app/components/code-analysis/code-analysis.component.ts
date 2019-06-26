@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-	selector: 'app-code-analysis',
+	selector: 'code-analysis',
 	templateUrl: './code-analysis.component.html',
 	styleUrls: ['./code-analysis.component.sass']
 })
@@ -30,7 +30,7 @@ export class CodeAnalysisComponent implements OnInit {
 					});
 				}
 			});
-			this.data.push({name: name, usage: usage, subskill: subskill});
+			this.data.push({name, usage, subskill});
 		});
 	}
 
