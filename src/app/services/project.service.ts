@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {throwError} from 'rxjs';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import {GLOBALS} from '../globals';
+import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { GLOBALS } from '../globals';
 
 
 @Injectable({
@@ -17,18 +17,19 @@ export class ProjectService implements Resolve<any> {
 	}
 
 	public getProjects(featured?: boolean) {
-		let body = {};
+		const body = {};
 		if (featured) {
-			body['filter'] = {featured: true};
+			body['filter'] = { featured: true };
 		}
+		body['sort'] = { _modified: -1 };
 		return this.http.post(this.apiURL, body).pipe(
 			catchError(this.handleError)
 		);
 	}
 
 	public getProject(id: string) {
-		let body = {};
-		body['filter'] = {name_slug: id};
+		const body = {};
+		body['filter'] = { name_slug: id };
 		return this.http.post(this.apiURL, body).pipe(
 			catchError(this.handleError)
 		);
@@ -57,5 +58,5 @@ export class ProjectService implements Resolve<any> {
 		// return an observable with a user-facing error message
 		return throwError(
 			'Something bad happened; please try again later.');
-	};
+	}
 }
