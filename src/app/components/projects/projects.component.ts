@@ -1,14 +1,14 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
-import {Project} from '../../models/project';
+import { Project } from '../../models/project';
 
-import {ProjectService} from '../../services/project.service';
-import {RouteNavigationService} from '../../services/route-navigation.service';
-import {ActivatedRoute} from '@angular/router';
-import {GLOBALS} from '../../globals';
+import { ProjectService } from '../../services/project.service';
+import { RouteNavigationService } from '../../services/route-navigation.service';
+import { ActivatedRoute } from '@angular/router';
+import { GLOBALS } from '../../globals';
 
 @Component({
-	selector: 'projects',
+	selector: 'app-projects',
 	templateUrl: './projects.component.html',
 	styleUrls: ['./projects.component.sass']
 })

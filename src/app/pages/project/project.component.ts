@@ -1,9 +1,10 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import {Project} from '../../models/project';
-import {GLOBALS} from '../../globals';
-import {RouteNavigationService} from '../../services/route-navigation.service';
+import { Project } from '../../models/project';
+import { GLOBALS } from '../../globals';
+import { RouteNavigationService } from '../../services/route-navigation.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-project',
@@ -18,11 +19,13 @@ export class ProjectComponent implements OnInit, AfterViewInit {
 	constructor(
 		public navigate: RouteNavigationService,
 		private route: ActivatedRoute,
+		private titleService: Title,
 	) {
 	}
 
 	ngOnInit() {
 		this.project = this.route.snapshot.data['project']['entries'][0];
+		this.titleService.setTitle(this.project.name + ' - Dimitris Mavroudis');
 	}
 
 	ngAfterViewInit() {

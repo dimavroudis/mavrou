@@ -13,12 +13,9 @@
 			</div>
 		</div>
 	</section>
-	<section *ngIf="project.skills" class="section" id="skillsSection">
-		<code-analysis [skills]="project.skills"></code-analysis>
+	<section *ngIf="project.skills" class="section section-project-skills" id="skillsSection">
+		<app-code-analysis [skills]="project.skills"></app-code-analysis>
 	</section>
-	<!--<section class="section se" *ngIf="project.highlights">-->
-	<!--<app-highlights [highlights]="project.highlights"></app-highlights>-->
-	<!--</section>-->
 </main>
 <ng-template #NotShow>
 	<app-page-not-found></app-page-not-found>

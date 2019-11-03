@@ -7,6 +7,6 @@ export class Project {
 	skills: Object;
 	link: string;
 	tags: Array<string>;
-	logo: string;
+	logo: any;
 	images: Object;
 }

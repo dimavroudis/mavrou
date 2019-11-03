@@ -24,15 +24,15 @@ const routes: Routes = [
 		path: 'projects',
 		children: [
 			{path: '', component: ProjectsPageComponent, data: {animation: 'Projects', featured: false}, resolve: {projects: ProjectService}},
-			{path: ':id', component: ProjectComponent, data: {animation: 'Project'}, resolve: {project: ProjectService}},
+			{path: ':id', component: ProjectComponent, data: {animation: 'Single'}, resolve: {project: ProjectService}},
 		]
 	},
 	{path: 'about', component: AboutPageComponent, data: {animation: 'AboutPage'}, resolve: {profile: ProfileService, skills: SkillsService}},
 	{
 		path: 'blog',
 		children: [
-			{path: '', component: BlogComponent, data: {animation: 'AboutPage'}, resolve: {blog: BlogService}},
-			{path: ':id', component: SinglePostComponent, data: {animation: 'AboutPage'}, resolve: {blog: BlogService}},
+			{path: '', component: BlogComponent, data: {animation: 'Blog'}, resolve: {blog: BlogService}},
+			{path: ':id', component: SinglePostComponent, data: {animation: 'Single'}, resolve: {blog: BlogService}},
 		]
 	},
 	{path: '**', component: PageNotFoundComponent}

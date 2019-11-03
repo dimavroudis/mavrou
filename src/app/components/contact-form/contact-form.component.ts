@@ -3,7 +3,7 @@ import {GLOBALS} from '../../globals';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
-	selector: 'contact-form',
+	selector: 'app-contact-form',
 	templateUrl: './contact-form.component.html',
 	styleUrls: ['./contact-form.component.sass']
 })

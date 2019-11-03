@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-about-page',
@@ -11,12 +12,13 @@ export class AboutPageComponent implements OnInit {
 	socialMedia: any = [];
 
 	constructor(
-		private route: ActivatedRoute
+		private route: ActivatedRoute, private titleService: Title
 	) {
 	}
 
 	ngOnInit() {
 		this.profile = this.route.snapshot.data['profile'];
+		this.titleService.setTitle('About me - Dimitris Mavroudis');
 		this.route.snapshot.data['profile']['socialProfiles'].forEach((social) => {
 			let name, url;
 			social['value'].forEach(field => {

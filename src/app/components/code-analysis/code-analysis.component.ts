@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-	selector: 'code-analysis',
+	selector: 'app-code-analysis',
 	templateUrl: './code-analysis.component.html',
 	styleUrls: ['./code-analysis.component.sass']
 })
@@ -16,7 +16,7 @@ export class CodeAnalysisComponent implements OnInit {
 	ngOnInit() {
 		this.skills.forEach((skill) => {
 			let name, usage;
-			let subskill = [];
+			const subskill = [];
 			skill['value'].forEach(field => {
 				if (field['field']['label'] === 'Skill') {
 					name = field['value']['display'];

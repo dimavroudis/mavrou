@@ -1,14 +1,17 @@
-import {Component} from '@angular/core';
-import {RouteNavigationService} from '../../services/route-navigation.service';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
-	selector: 'projects-page',
+	selector: 'app-projects-page',
 	templateUrl: './projects-page.component.html',
 	styleUrls: ['./projects-page.component.sass']
 })
-export class ProjectsPageComponent {
+export class ProjectsPageComponent implements OnInit {
 
-	constructor(public navigate: RouteNavigationService) {
+	constructor(private titleService: Title) { }
+
+	ngOnInit(): void {
+		this.titleService.setTitle('My projects - Dimitris Mavroudis');
 	}
 
 }

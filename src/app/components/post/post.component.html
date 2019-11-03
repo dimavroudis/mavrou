@@ -1,14 +1,22 @@
-<header>
-	<h1>{{post.title}}</h1>
-	<span *ngFor="let tag of post.tags" class="badge">{{tag}}</span>
-	<img [src]="baseURL + post.image.path" alt="{{post.title}}">
+<header class="post-header">
+	<h1 class="post-title">
+		<a *ngIf="summary" routerLink="/blog/{{post.title_slug}}" >{{post.title}}</a>
+		<span *ngIf="!summary">{{post.title}}</span>
+	</h1>
+	<div class="post-meta">
+		<p class="post-date">Published {{datePublished}}. </p>
+		<div class="post-tags">
+			<span *ngFor="let tag of post.tag" class="badge">{{tag}}</span>
+		</div>
+	</div>
 </header>
-<div [innerHTML]="post.content"></div>
-<footer *ngIf="summary">
+<div class="post-image" *ngIf="post.image?.path">
+	<img  [src]="baseURL +  post.image.path" alt="{{post.title}}">
+</div>
+<div class="post-content" [innerHTML]="summary ? post.content.slice(0, 600) + '...':  post.content"></div>
+<footer class="post-footer" *ngIf="summary">
 	<div class="post-link">
 		<a class="link-visit link link-lg" data-hover="Read More" routerLink="/blog/{{post.title_slug}}">Read more</a>
 	</div>
 </footer>
-
-
 

@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {animate, query, style, transition, trigger} from '@angular/animations';
-import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {RouteNavigationService} from './services/route-navigation.service';
+import { Component } from '@angular/core';
+import { animate, query, style, transition, trigger } from '@angular/animations';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { RouteNavigationService } from './services/route-navigation.service';
 
 @Component({
 	selector: 'app-root',
@@ -9,30 +9,30 @@ import {RouteNavigationService} from './services/route-navigation.service';
 	styleUrls: ['./app.component.sass'],
 	animations: [
 		trigger('routeAnimations', [
-			transition('* => Project', [
+			transition('* => Single', [
 				query(':enter', [
-					style({opacity: 0})
-				], {optional: true}),
+					style({ opacity: 0 })
+				], { optional: true }),
 				query(':leave', [
-					animate('0ms', style({visibility: 'hidden'}))
-				], {optional: true}),
+					animate('0ms', style({ visibility: 'hidden' }))
+				], { optional: true }),
 				query(':enter', [
-					style({opacity: 0}),
-					animate('300ms 100ms', style({opacity: 1}))
-				], {optional: true}),
+					style({ opacity: 0 }),
+					animate('300ms 100ms', style({ opacity: 1 }))
+				], { optional: true }),
 			]),
 			transition('* => *', [
 				query(':enter', [
-					style({opacity: 0})
-				], {optional: true}),
+					style({ opacity: 0 })
+				], { optional: true }),
 				query(':leave', [
-					style({opacity: 1}),
-					animate('300ms', style({opacity: 0}))
-				], {optional: true}),
+					style({ opacity: 1 }),
+					animate('300ms', style({ opacity: 0 }))
+				], { optional: true }),
 				query(':enter', [
-					style({opacity: 0}),
-					animate('300ms 300ms', style({opacity: 1}))
-				], {optional: true}),
+					style({ opacity: 0 }),
+					animate('300ms 300ms', style({ opacity: 1 }))
+				], { optional: true }),
 			])
 		])
 	]
@@ -40,19 +40,24 @@ import {RouteNavigationService} from './services/route-navigation.service';
 
 export class AppComponent {
 
+	menu = [
+		{ name: 'About', path: '/about' },
+		{ name: 'Projects', path: '/projects' },
+	];
+
 	constructor(private router: Router, public navigate: RouteNavigationService) {
 		this.router.events.subscribe(event => {
 			if (event instanceof NavigationEnd) {
-				(<any>window).gtag('config', 'UA-79194198-1', {'page_path': event.urlAfterRedirects});
+				(<any>window).gtag('config', 'UA-79194198-1', { 'page_path': event.urlAfterRedirects });
 
 			}
 		});
 		this.navigate.childInit$.subscribe(data => {
-				if (data === 'animate' || data === undefined) {
-					this.animateOnView();
-					this.inView();
-				}
+			if (data === 'animate' || data === undefined) {
+				this.animateOnView();
+				this.inView();
 			}
+		}
 		);
 	}
 

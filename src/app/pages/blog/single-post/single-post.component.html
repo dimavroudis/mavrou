@@ -1,5 +1,9 @@
-<main id="single-post">
-	<article *ngIf="post; else NotShow" class="section post-wrapper post-summary" id="{{post.name_slug}}">
-		<post [post]="post"></post>
+<main id="single-post" class="content">
+	<article *ngIf="post" class="section post-wrapper post-summary" id="{{post.name_slug}}">
+		<app-post [post]="post"></app-post>
+		<footer class="post-nav">
+
+		</footer>
 	</article>
+
 </main>

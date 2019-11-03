@@ -4,6 +4,7 @@ import {Profile} from '../../models/profile';
 import {ProfileService} from '../../services/profile.service';
 import {RouteNavigationService} from '../../services/route-navigation.service';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-home-page',
@@ -15,10 +16,11 @@ export class HomePageComponent implements OnInit, AfterViewInit {
 	profile: Profile;
 	socialMedia: Array<object> = [];
 
-	constructor(private profileService: ProfileService, public navigate: RouteNavigationService, private route: ActivatedRoute) {
+	constructor(public navigate: RouteNavigationService, private route: ActivatedRoute, private titleService: Title) {
 	}
 
 	ngOnInit(): void {
+		this.titleService.setTitle('Dimitris Mavroudis - Front End & WordPress Developer');
 		this.profile = this.route.snapshot.data['profile'];
 		this.route.snapshot.data['profile']['socialProfiles'].forEach((social) => {
 			let name = '', url = '';

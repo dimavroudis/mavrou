@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
-import {GLOBALS} from '../globals';
-import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { GLOBALS } from '../globals';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -21,7 +21,7 @@ export class SkillsService implements Resolve<any> {
 	}
 
 	public getSkill(id: string) {
-		const options = {params: new HttpParams().set('filter[name_slug]', id)};
+		const options = { params: new HttpParams().set('filter[name_slug]', id) };
 		return this.http.get(this.apiURL, options).pipe(
 			catchError(this.handleError)
 		);
@@ -45,6 +45,6 @@ export class SkillsService implements Resolve<any> {
 		// return an observable with a user-facing error message
 		return throwError(
 			'Something bad happened; please try again later.');
-	};
+	}
 
 }

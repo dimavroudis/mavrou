@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import {throwError} from 'rxjs';
-import {GLOBALS} from '../globals';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { throwError } from 'rxjs';
+import { GLOBALS } from '../globals';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -15,22 +15,33 @@ export class BlogService implements Resolve<any> {
 	constructor(private http: HttpClient) {
 	}
 
-	public getPosts() {
-		let body = {};
-		body['limit'] = 10;
-		body['field'] = {status: 'published'};
-		body['sort:'] = {_created: -1};
+	public getPosts(project?: string, page_number = 1, populate = 1, sort = { _modified: -1 }, limit = 10) {
+		const body = {
+			limit,
+			skip: (page_number - 1) * limit,
+			sort,
+			populate,
+			field: {
+				status: 'published',
+				project: project
+			}
+		};
 		return this.http.post(this.apiURL, body).pipe(
 			catchError(this.handleError)
 		);
 	}
 
 	public getSinglePost(id: string) {
-		let body = {};
-		body['filter'] = {title_slug: id};
+		const body = {};
+		body['filter'] = { title_slug: id };
+		body['populate'] = 1;
 		return this.http.post(this.apiURL, body).pipe(
 			catchError(this.handleError)
 		);
+	}
+
+	public getNext(id: string) {
+
 	}
 
 	resolve(route: ActivatedRouteSnapshot) {
@@ -56,5 +67,5 @@ export class BlogService implements Resolve<any> {
 		// return an observable with a user-facing error message
 		return throwError(
 			'Something bad happened; please try again later.');
-	};
+	}
 }
