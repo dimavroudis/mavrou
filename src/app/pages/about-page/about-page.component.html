@@ -1,17 +1,18 @@
-<section class="section section-hero section-about section-full-screen">
-	<div class="hero-heading">
-		<h1 class="animate text-shadow-pop">About me</h1>
-		<div [innerHTML]="profile.about" class="section-about-content"></div>
-	</div>
-	<div class="hero-image">
-		<img alt="illustration of a digital nomad" src="assets\images\digital_nomad.svg">
-	</div>
-</section>
-<section class="section section-skills">
-	<app-skills></app-skills>
-</section>
-
-<section class="section section-projects-below section-contact-form">
+<article>
+	<section class="section section-hero section-about section-full-screen">
+		<div class="hero-heading">
+			<h1 class="animate text-shadow-pop">About me</h1>
+			<div [innerHTML]="profile.about" class="section-about-content"></div>
+		</div>
+		<div class="hero-image">
+			<img alt="illustration of a digital nomad" src="assets\images\digital_nomad.svg">
+		</div>
+	</section>
+	<section class="section section-skills">
+		<app-skills></app-skills>
+	</section>
+</article>
+<footer class="section section-projects-below section-contact-form">
 	<h3 class="animate text-shadow-pop section-header">Want to get in touch? </h3>
 	<div class="section-contact-form-content">
 		<div class="contact-form-wrapper">
@@ -21,4 +22,4 @@
 			<img alt="man walking by a laptop" src="assets\images\worklife.svg">
 		</div>
 	</div>
-</section>
+</footer>

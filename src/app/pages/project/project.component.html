@@ -1,4 +1,4 @@
-<main *ngIf="project; else NotShow" id="project">
+<article *ngIf="project; else NotShow" id="project">
 	<section class="section section-hero section-project-summary section-full-screen" id="summary">
 		<div class="screenshots">
 			<img (load)="AnimateImage(image.meta.type)" *ngFor="let image of project.images;"
@@ -16,7 +16,7 @@
 	<section *ngIf="project.skills" class="section section-project-skills" id="skillsSection">
 		<app-code-analysis [skills]="project.skills"></app-code-analysis>
 	</section>
-</main>
+</article>
 <ng-template #NotShow>
 	<app-page-not-found></app-page-not-found>
 </ng-template>

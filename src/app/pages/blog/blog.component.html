@@ -1,9 +1,9 @@
-<main *ngIf="posts; else NotShow" id="blog" class="content">
+<div *ngIf="posts; else NotShow" id="blog" class="content">
 	<article *ngFor="let post of posts;let odd=odd; let even=even;"
 					 [ngClass]="{ 'project-odd': odd, 'project-even': even}"
 					 class="section post-wrapper post-summary"
 					 id="{{post.name_slug}}">
 		<app-post [post]="post" summary="true"></app-post>
 	</article>
-</main>
+</div>
 

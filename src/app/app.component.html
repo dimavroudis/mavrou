@@ -1,7 +1,7 @@
-<div class="navbar-wrapper">
+<header class="navbar-wrapper">
 	<div class="navbar">
 		<a routerLink="/" routerLinkActive="active">
-			<img alt="logo" class="logo" height="48" src="assets/icons/icon-48-48.png" width="48">
+			<img alt="Mavrou.gr Logo, Figure working on a laptop" class="logo" height="48" src="assets/icons/icon-48-48.png" width="48">
 		</a>
 		<nav class="nav" id="navMenu">
 			<ul class="unstyled-list inline-list">
@@ -11,7 +11,7 @@
 			</ul>
 		</nav>
 	</div>
-</div>
-<div [@routeAnimations]="prepareRoute(outlet)">
+</header>
+<main [@routeAnimations]="prepareRoute(outlet)">
 	<router-outlet #outlet="outlet"></router-outlet>
-</div>
+</main>

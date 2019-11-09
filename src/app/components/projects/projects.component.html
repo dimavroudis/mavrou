@@ -1,17 +1,17 @@
 <div class="projects">
-	<div *ngFor="let project of projects;let odd=odd; let even=even;"
-			 [ngClass]="{ 'project-odd': odd, 'project-even': even}"
-			 class="project" id="{{project.name_slug}}">
+	<article *ngFor="let project of projects;let odd=odd; let even=even;"
+		[ngClass]="{ 'project-odd': odd, 'project-even': even}" class="project" id="{{project.name_slug}}">
 		<div>
-			<h3>{{project.name}}</h3>
-			<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
-			<div [innerHTML]="project.summary"></div>
+			<header>
+				<h1>{{project.name}}</h1>
+				<span *ngFor="let tag of project.tags" class="badge">{{tag}}</span>
+			</header>
+			<p [innerHTML]="project.summary"></p>
 			<div class="project-links">
 				<a class="link-visit link link-lg" data-hover="Visit project" routerLink="/projects/{{project.name_slug}}">Visit
 					project</a>
 			</div>
 		</div>
 		<img alt="{{project.name}} logo" class="animate box-shadow-pop" [src]="baseURL + project.logo.path">
-	</div>
+	</article>
 </div>
-
