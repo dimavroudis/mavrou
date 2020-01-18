@@ -2,7 +2,7 @@
 	<p>Checkout my profile on
 		<span *ngFor="let socialProfile of socialMedia;let index = index;">
 			<span *ngIf="index !== 0"> and </span>
-			<a class="link" href="{{socialProfile.url}}">{{socialProfile.name}}</a>
+			<a class="link" target="_blank" rel="noopener" href="{{socialProfile.url}}">{{socialProfile.name}}</a>
 		</span> or send me a message through the form below.
 	</p>
 	<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)" novalidate>
