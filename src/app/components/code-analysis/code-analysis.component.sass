@@ -12,7 +12,7 @@
 	&:before
 		content: 'Tech Stack'
 		position: absolute
-		top: -180px
+		top: -220px
 		left: -20px
 		z-index: -1
 		font-family: $font-header
@@ -23,7 +23,7 @@
 	display: flex
 	position: relative
 	cursor: default
-	transition: transform 600ms ease-out
+	transition: transform 500ms ease-in-out
 	padding: 1em
 
 	&:first-child
@@ -44,6 +44,10 @@
 		ul.subskills
 			opacity: 1
 			transform: translateY(0)
+			transition: opacity 600ms 300ms ease-out, transform 600ms 150ms ease-out
+
+
+.not-in-view
 
 .graphbar
 	position: relative
@@ -84,7 +88,7 @@ ul.subskills
 	opacity: 0
 	color: $link-color
 	transform: translateY(-40px)
-	transition: opacity 1s 200ms ease-out, transform 1.2s ease-out
+	transition: opacity 200ms 0ms ease-out, transform 800ms 0ms ease-out
 
 
 .not-in-view
