@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
 import { Project } from '../../models/project';
-
-import { ProjectService } from '../../services/project.service';
 import { RouteNavigationService } from '../../services/route-navigation.service';
 import { ActivatedRoute } from '@angular/router';
 import { GLOBALS } from '../../globals';
@@ -17,7 +15,7 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
 	projects: Project[];
 	baseURL = GLOBALS.BASE_API_URL;
 
-	constructor(private projectService: ProjectService, public navigate: RouteNavigationService, private route: ActivatedRoute) {
+	constructor(public navigate: RouteNavigationService, private route: ActivatedRoute) {
 	}
 
 	ngOnInit() {

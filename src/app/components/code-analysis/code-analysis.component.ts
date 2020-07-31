@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-code-analysis',
@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class CodeAnalysisComponent implements OnInit {
 	@Input() skills;
-	data: Array<object> = [];
+	data: Array<{ name: string, usage: number, subskill: any }> = [];
 
 	constructor() {
 	}
@@ -30,7 +30,7 @@ export class CodeAnalysisComponent implements OnInit {
 					});
 				}
 			});
-			this.data.push({name, usage, subskill});
+			this.data.push({ name, usage, subskill });
 		});
 	}
 
