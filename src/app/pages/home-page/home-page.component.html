@@ -1,7 +1,7 @@
 <section class="section section-hero section-full-screen">
 	<div class="hero-heading">
 		<h1 class="animate text-shadow-pop">{{profile.fname}} {{profile.lname}}</h1>
-		<p class="lead">{{profile.jobTitle}} at {{profile.worksFor}}</p>
+		<p class="lead">{{profile.jobTitle}}{{profile.worksFor ? 'at ' + profile.worksFor : ''}}</p>
 	</div>
 	<div class="hero-image">
 		<object data="assets\images\activity.svg" type="image/svg+xml">
@@ -26,4 +26,3 @@
 		</div>
 	</div>
 </footer>
-
