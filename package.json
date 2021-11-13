@@ -22,7 +22,7 @@
     "@angular/pwa": "^0.1000.4",
     "@angular/router": "^10.0.7",
     "@angular/service-worker": "^10.0.7",
-    "core-js": "^3.6.5",
+    "core-js": "^3.18.3",
     "moment": "^2.27.0",
     "rxjs": "^6.6.2",
     "sass-convert": "^0.5.2",
