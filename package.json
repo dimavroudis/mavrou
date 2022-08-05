@@ -22,7 +22,7 @@
     "@angular/router": "^13.0.2",
     "@angular/service-worker": "^13.0.2",
     "core-js": "^3.18.3",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "rxjs": "^6.6.2",
     "tslib": "^2.3.1",
     "typed.js": "^2.0.11",
