@@ -9,9 +9,6 @@ import {AboutPageComponent} from './pages/about-page/about-page.component';
 import {ProjectService} from './services/project.service';
 import {ProfileService} from './services/profile.service';
 import {SkillsService} from './services/skills.service';
-import {BlogComponent} from './pages/blog/blog.component';
-import {BlogService} from './services/blog.service';
-import {SinglePostComponent} from './pages/blog/single-post/single-post.component';
 
 const routes: Routes = [
 	{
@@ -28,13 +25,6 @@ const routes: Routes = [
 		]
 	},
 	{path: 'about', component: AboutPageComponent, data: {animation: 'AboutPage'}, resolve: {profile: ProfileService, skills: SkillsService}},
-	{
-		path: 'blog',
-		children: [
-			{path: '', component: BlogComponent, data: {animation: 'Blog'}, resolve: {blog: BlogService}},
-			{path: ':id', component: SinglePostComponent, data: {animation: 'Single'}, resolve: {blog: BlogService}},
-		]
-	},
 	{path: '**', component: PageNotFoundComponent}
 ];
 
