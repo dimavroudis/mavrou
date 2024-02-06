@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import {GLOBALS} from '../globals';
 
 @Injectable({
 	providedIn: 'root'
 })
 
-export class ProfileService implements Resolve<any> {
+export class ProfileService  {
 	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.PROFILE_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {

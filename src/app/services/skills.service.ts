@@ -3,12 +3,12 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { GLOBALS } from '../globals';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class SkillsService implements Resolve<any> {
+export class SkillsService  {
 	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.SKILLS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {

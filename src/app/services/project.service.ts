@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 import { GLOBALS } from '../globals';
 
 
@@ -10,7 +10,7 @@ import { GLOBALS } from '../globals';
 	providedIn: 'root'
 })
 
-export class ProjectService implements Resolve<any> {
+export class ProjectService  {
 	apiURL = GLOBALS.BASE_API_URL + '/' + GLOBALS.PROJECTS_ENDPOINT + '?token=' + GLOBALS.TOKEN_API;
 
 	constructor(private http: HttpClient) {
